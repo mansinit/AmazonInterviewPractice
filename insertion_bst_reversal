@@ -1,0 +1,34 @@
+#Create insertion in BST code using recursion
+#used preorder to print the tree
+#created an empty node with BST(None)
+class BST:
+    def __init__(self,key):
+        self.key=key
+        self.lchild=None
+        self.rchild=None
+    def insert(self,data):
+        if self.key is None:
+            self.key=(data)
+            return
+        elif self.key<data:
+            if self.rchild:
+                self.rchild.insert(data)
+            else:
+                self.rchild=BST(data)
+        else:
+            if self.lchild:
+                self.lchild.insert(data)
+            else:
+                self.lchild=BST(data)
+    def preorder(self):
+        print(self.key)
+        if self.lchild:
+            self.lchild.preorder()
+        if self.rchild:
+            self.rchild.preorder()
+root=BST(None)
+#root.insert(20)
+list=[40,30,50,10]
+for i in list:
+    root.insert(i)
+root.preorder()
