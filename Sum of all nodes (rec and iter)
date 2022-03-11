@@ -1,0 +1,40 @@
+class BST:
+    def __init__(self,data):
+        self.data=data
+        self.left=None
+        self.right=None
+def preorder(root):
+    if root is None:
+        return
+    print(root.data)
+    preorder(root.left)
+    preorder(root.right)
+#recursive sum is easier
+def sum(root):
+    if root is None:
+        return 0
+    return sum(root.left)+root.data+sum(root.right)
+#sum of all nodes iterative would be implementing only using queue
+def sum_iterative(root):
+    queue=[]
+    if root is None:
+        return 0
+    queue.append(root)
+    print(queue)
+    sum=0
+    while len(queue)!=0:
+        root=queue.pop(0)
+        x=((root.data))
+        sum+=x
+        if root.left:
+            queue.append(root.left)
+        if root.right:
+            queue.append(root.right)
+    return sum
+root=BST(20)
+root.left=BST(10)
+root.right=BST(10)
+root.left.left=BST(5)
+root.left.right=BST(5)
+preorder(root)
+print(sum_iterative(root))
