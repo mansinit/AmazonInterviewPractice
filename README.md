@@ -7,3 +7,4 @@ And complexity is log n when :
 16 -- 4
 2 -- 1
 this complies that, if we have 8 elements and we divide the array to search for an element into first 4 and then first 2 and one more search that
+sort function in python uses Timsort algo and take O(nlogn) complexity. Timsort is insertion and merge sort
