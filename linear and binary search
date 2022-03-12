@@ -1,0 +1,35 @@
+# the element is in the first position
+# the element is in the last position
+# the number is the middle element
+# the number doesn't exist
+
+# [13,12,5,4,1]
+# worst case scenario - 1
+# linear - O(n)
+def linear(list,element,position):
+    index=0
+    while index<len(list):
+        if list[index]==element:
+            return index
+        index+=1
+    return -1
+#binary - worstcase scenario - time complexity is O(log n)
+def binary(list,element):
+    lo=0
+    hi=len(list)-1
+    while lo<=hi:
+        mid=(lo+hi)//2
+        if list[mid]==element:
+            return mid
+        elif list[mid]<element:
+            hi=mid-1
+        elif list[mid]>element:
+            lo=mid+1
+    return -1
+list=[13,12,5,4,1]
+element=5
+query=4
+result=linear(list,element,query)
+result_binary=binary(list,element)
+print(result_binary)
+print(result)
