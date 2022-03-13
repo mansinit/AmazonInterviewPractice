@@ -1,35 +1,32 @@
 #reverse a link list
 #create a class
 #time complexity is O(n) and space comp is O(1)
+
 class Node:
     def __init__(self,data):
         self.data=data
         self.next=None
-class LinkList:
-    def __init__(self):
-        self.head=None
-    def reverse(self):
-        prev=None
-        cur=self.head
-        while(cur is not None):
-            next=cur.next
-            cur.next=prev
-            prev=cur
-            cur=next
-        self.head=prev
-    def push(self,data):
-        new_node=Node(data)
-        new_node.next=self.head
-        self.head=new_node
-    def print_list(self):
-        temp=self.head
-        while temp is not None:
-            print(temp.data,)
-            temp=temp.next
-llist=LinkList()
-llist.push(1)
-llist.push(2)
-llist.push(3)
-llist.print_list()
-llist.reverse()
-llist.print_list()
+def reverse(node):
+    prev=None
+    next=None
+    cur=node
+    while cur!=None:
+        next=cur.next
+        cur.next=prev
+        prev=cur
+        cur=next
+    node=prev
+    return node
+def print_nodes(node):
+    temp=node
+    while temp!=None:
+        print(temp.data,end="->")
+        temp=temp.next
+head = None
+head = Node(1)
+head.next = Node(2)
+head.next.next = Node(3)
+head.next.next.next = Node(4)
+head.next.next.next.next = Node(5)
+reverse(head)
+print_nodes(head)
