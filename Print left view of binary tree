@@ -1,0 +1,39 @@
+class BST:
+    def __init__(self,data):
+        self.data=data
+        self.left=None
+        self.right=None
+def preorder(root):
+    if root is None:
+        return
+    print(root.data)
+    preorder(root.left)
+    preorder(root.right)
+  
+def print_left_view(root):
+    q=[]
+    if root is None:
+        return
+    q.append(root)
+    while len(q)!=0:
+        root2=q[0]
+        n=len(q)
+        q.pop(0)
+        for i in range(1,n+1):
+            if i==1:
+                print(root2.data,end=" ")
+            if root2.left is not None:
+                q.append(root2.left)
+            elif root2.right is not None:
+                q.append(root2.right)
+    
+root1=BST(20)
+root1.left=BST(10)
+root1.right=BST(30)
+root1.left.left=BST(5)
+root1.left.right=BST(7)
+root1.left.right.right=BST(9)
+root1.right.left=BST(40)
+root1.right.left.right=BST(80)
+preorder(root1)
+print(print_left_view(root1))
