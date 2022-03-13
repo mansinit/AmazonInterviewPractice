@@ -1,0 +1,46 @@
+# k largest or smallest element in an array
+# [11,13,6,3,1]
+# 2nd largest element = 11
+# k=1 if we sort it the best case complexity wil be O(1).
+# k is not in the range of len of the array
+# sort function of python uses Timsort - insertion and merge sort
+def insertion(a):
+    for j in range(1,len(a)):
+        i=j
+        while i>0:
+            if a[i]<a[i-1]:
+                temp=a[i]
+                a[i]=a[i-1]
+                a[i-1]=temp
+            i-=1
+    return a
+def mergesort(a):
+    if len(a)>1:
+        left=a[:len(a)//2]
+        right=a[len(a)//2:]
+        print(left)
+        mergesort(left)
+        print(right)
+        mergesort(right)
+        i,j,k=0,0,0
+        while i<len(left) and j<len(right):
+            if left[i]<=right[j]:
+                a[k]=left[i]
+                i+=1
+            elif left[i]>right[j]:
+                a[k]=right[j]
+                j+=1
+            k+=1
+        while i<len(left):
+            a[k]=left[i]
+            k+=1
+            i+=1
+        while j<len(right):
+            a[k]=right[j]
+            k+=1
+            j+=1
+        print(a)
+    return a
+list=[4,3,2,10,12,5,1,6,9,11]
+#print(insertion(list))
+print(mergesort(list))
